@@ -26,8 +26,17 @@ public class Tiles {
         tileMap.put("empty", new Tile(0, 0));
         tileMap.put("wall", new Tile(10, 17));
         tileMap.put("floor", new Tile(2, 0));
-        tileMap.put("player", new Tile(27, 0));
+        tileMap.put("player", new Tile(25, 1));
         tileMap.put("skeleton", new Tile(29, 6));
+
+        //Info: tiles.png 31x31
+        //added items
+        tileMap.put("key", new Tile(17, 23));
+        tileMap.put("weapon", new Tile(0, 30));
+        //treasure items
+        tileMap.put("ring", new Tile(13, 28));
+        tileMap.put("coin", new Tile(9, 26));
+        tileMap.put("crown", new Tile(11, 24));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
