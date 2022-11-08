@@ -12,7 +12,10 @@ public class Player extends Actor {
     @Override
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getActor() instanceof Skeleton) {
+        if (nextCell.getActor() instanceof Skeleton ||
+            nextCell.getActor() instanceof Hollow ||
+            nextCell.getActor() instanceof Golem) {
+            /*Next line is a quick check. Delete before final commit*/
             System.out.println("HIT");
             attack(nextCell.getActor());
         }
@@ -28,8 +31,10 @@ public class Player extends Actor {
         enemy.health -= power;
         if (enemy.health > 0) {
             this.health -= enemy.power;
+            /*Next line is a quick check. Delete before final commit*/
             System.out.println("It is still alive");
         } else {
+            /*Next line is a quick check. Delete before final commit*/
             System.out.println("It is dead");
             enemy.getCell().setActor(null);
 
