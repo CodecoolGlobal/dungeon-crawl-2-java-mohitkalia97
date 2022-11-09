@@ -49,6 +49,34 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Mork(cell);
                             break;
+                        case '1':
+                            cell.setType(CellType.INCLINELEFT);
+                            break;
+                        case '3':
+                            cell.setType(CellType.INCLINERIGHT);
+                            break;
+                        case '2':
+                            cell.setType(CellType.BOTTOMWALL);
+                            break;
+                        case '8':
+                            cell.setType(CellType.TOPWALL);
+                            break;
+                        case '4':
+                            cell.setType(CellType.LEFTWALL);
+                            break;
+                        case '6':
+                            cell.setType(CellType.RIGHTWALL);
+                            break;
+                        case '7':
+                            cell.setType(CellType.DECLINELEFT);
+                            break;
+                        case '9':
+                            cell.setType(CellType.DECLINERIGHT);
+                            break;
+                        case 'R':
+                            cell.setType(CellType.RABBLE);
+                            break;
+
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
