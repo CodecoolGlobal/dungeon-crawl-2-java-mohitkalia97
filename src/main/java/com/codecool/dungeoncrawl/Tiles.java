@@ -28,6 +28,9 @@ public class Tiles {
         tileMap.put("floor", new Tile(2, 0));
         tileMap.put("player", new Tile(27, 0));
         tileMap.put("skeleton", new Tile(29, 6));
+        tileMap.put("exclamation", new Tile(19, 25));
+        tileMap.put("gork", new Tile(18, 24));
+        tileMap.put("mork", new Tile(1, 15));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
