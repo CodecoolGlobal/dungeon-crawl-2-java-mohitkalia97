@@ -12,7 +12,8 @@ public enum CellType {
     TOPWALL("topWall"),
     LEFTWALL("leftWall"),
     RIGHTWALL("rightWall"),
-    RABBLE("rabble");
+    RABBLE("rabble"),
+    CRYSTAL("crystal");
 
     private final String tileName;
 

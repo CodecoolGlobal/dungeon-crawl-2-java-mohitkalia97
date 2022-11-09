@@ -76,6 +76,9 @@ public class MapLoader {
                         case 'R':
                             cell.setType(CellType.RABBLE);
                             break;
+                        case 'C':
+                            cell.setType(CellType.CRYSTAL);
+                            break;
 
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
