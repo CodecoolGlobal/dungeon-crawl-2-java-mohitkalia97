@@ -19,6 +19,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.Random;
+
 
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
@@ -71,6 +73,8 @@ public class Main extends Application {
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
+    /*    Random random = new Random();
+        int someInt = random.nextInt(3) - 1;*/
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
@@ -89,6 +93,7 @@ public class Main extends Application {
                 refresh();
                 break;
         }
+        /*map.getPlayer().move(someInt,someInt);*/
     }
     
     private void refresh() {

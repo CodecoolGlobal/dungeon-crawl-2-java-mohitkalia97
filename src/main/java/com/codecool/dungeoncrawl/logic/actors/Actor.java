@@ -7,6 +7,7 @@ public abstract class Actor implements Drawable {
     protected Cell cell;
     protected int health;
     protected int power;
+    private boolean hasKey = false;
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -19,6 +20,15 @@ public abstract class Actor implements Drawable {
         nextCell.setActor(this);
         cell = nextCell;
     }
+
+    public void setHasKey(boolean hasKey) {
+        this.hasKey = hasKey;
+    }
+
+    public boolean hasKey() {
+        return hasKey;
+    }
+}
 
     public int getHealth() {
         return health;
