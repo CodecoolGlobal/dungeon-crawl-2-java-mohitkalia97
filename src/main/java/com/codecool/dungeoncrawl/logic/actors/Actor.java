@@ -7,6 +7,7 @@ import com.codecool.dungeoncrawl.logic.Drawable;
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
+    private boolean hasKey = false;
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -36,5 +37,13 @@ public abstract class Actor implements Drawable {
 
     public int getY() {
         return cell.getY();
+    }
+
+    public void setHasKey(boolean hasKey) {
+        this.hasKey = hasKey;
+    }
+
+    public boolean hasKey() {
+        return hasKey;
     }
 }
