@@ -114,6 +114,10 @@ public class MapLoader {
                         case 'T':
                             cell.setType(CellType.TREE);
                             break;
+                        case 'h':
+                            cell.setType(CellType.FLOOR);
+                            new Hollow(cell);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

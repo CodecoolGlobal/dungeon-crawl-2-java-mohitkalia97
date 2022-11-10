@@ -97,7 +97,7 @@ public class Main extends Application {
         }
         /*map.getPlayer().move(someInt,someInt);*/
     }
-    
+
     private void refresh() {
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -105,8 +105,6 @@ public class Main extends Application {
             for (int y = 0; y < map.getHeight(); y++) {
                 Cell cell = map.getCell(x, y);
                 if (cell.getActor() != null) {
-             /*       Skeleton skeleton = (Skeleton) map.getCell(x,y).getActor();
-                    skeleton.move();*/
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else if (cell.getItem() != null) {
                     Tiles.drawTile(context, cell.getItem(), x, y);
@@ -120,3 +118,4 @@ public class Main extends Application {
         strengthLabel.setText("" + map.getPlayer().getStrength());
     }
 }
+

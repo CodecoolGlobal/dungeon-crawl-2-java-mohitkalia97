@@ -17,7 +17,7 @@ public class Skeleton extends Actor {
         return "skeleton";
     }
 
-    public void move() {
+   /* public void move() {
         int dx = 0;
         int dy = 0;
         switch (getRandomNumberForMovement()) {
@@ -48,5 +48,5 @@ public class Skeleton extends Actor {
         int low = 1;
         int high = 5;
         return r.nextInt(high-low) + low;
-    }
+    }*/
 }

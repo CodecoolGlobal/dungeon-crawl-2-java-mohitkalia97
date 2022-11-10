@@ -41,6 +41,8 @@ public class Tiles {
         tileMap.put("rightWall", new Tile(20, 1));
         tileMap.put("rabble", new Tile(19, 1));
         tileMap.put("crystal", new Tile(17, 22));
+        tileMap.put("hollow", new Tile(24, 7));
+
 
         //Info: tiles.png 31x31
         //added items
