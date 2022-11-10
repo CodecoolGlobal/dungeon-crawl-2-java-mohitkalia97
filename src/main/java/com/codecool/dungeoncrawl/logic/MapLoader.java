@@ -97,7 +97,7 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Ring(cell);
                             break;
-                        case 'm':
+                        case 'o':
                             cell.setType(CellType.FLOOR);
                             new Coin(cell);
                             break;

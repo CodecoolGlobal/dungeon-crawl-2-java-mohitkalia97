@@ -47,7 +47,7 @@ public class Main extends Application {
         ui.add(pickUpButton, 3, 0);
 
 
-
+        pickUpButton.setFocusTraversable(false);
         pickUpButton.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
