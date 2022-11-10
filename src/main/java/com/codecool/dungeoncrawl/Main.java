@@ -4,10 +4,7 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Player;
-import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -19,8 +16,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import java.util.Map;
-
 
 
 public class Main extends Application {
@@ -33,7 +28,7 @@ public class Main extends Application {
     Label healthLabel = new Label();
     Label inventoryLabel = new Label();
     Label strengthLabel = new Label();
-    private Button pickUpButton = new Button("Pick up the item!");
+    private final Button pickUpButton = new Button("Pick up the item!");
 
     public static void main(String[] args) {
         launch(args);
@@ -107,42 +102,40 @@ public class Main extends Application {
     private void changeLevel(Player player) {
         if(player.getX() == 19 && player.getY() == 19) {
             if(currentMap.equals("/map.txt")){
-                setupNewMap("/map1.txt", new Stage());
+                setupNewMap("/map1.txt");
             }
         }
     }
-    private void setupNewMap(String newMap, Stage primaryStage){
+    private void setupNewMap(String newMap){
         MapLoader.loadMap(newMap);
         Canvas canvas = new Canvas(
-                map.getWidth() * Tiles.TILE_WIDTH,
-                map.getHeight() * Tiles.TILE_WIDTH);
+                Math.min(map.getWidth(), 30) * Tiles.TILE_WIDTH,
+                Math.min(map.getHeight(), 22) * Tiles.TILE_WIDTH);
         GraphicsContext context = canvas.getGraphicsContext2D();
         GridPane ui = new GridPane();
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
 
-        ui.add(new Label("Health: "), 0, 0);
-        ui.add(healthLabel, 1, 0);
-
-        BorderPane borderPane = new BorderPane();
-
-        borderPane.setCenter(canvas);
-        borderPane.setRight(ui);
-
-        Scene scene = new Scene(borderPane);
-        primaryStage.setScene(scene);
+        currentMap=newMap;
+        map = MapLoader.loadMap(currentMap);
         refresh();
-        scene.setOnKeyPressed(this::onKeyPressed);
 
-        primaryStage.setTitle("Dungeon Crawl");
-        primaryStage.show();
     }
     private void refresh() {
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        for (int x = 0; x < map.getWidth(); x++) {
-            for (int y = 0; y < map.getHeight(); y++) {
-                Cell cell = map.getCell(x, y);
+        int centerX = (int) (canvas.getWidth() / (Tiles.TILE_WIDTH * 2));
+        int centerY = (int) (canvas.getHeight() / (Tiles.TILE_WIDTH * 2)) - 1;
+        int[] focus = new int[2];
+        if (map.getPlayer().getX() > centerX) {
+            focus[0] = map.getPlayer().getX() - centerX;
+        }
+        if (map.getPlayer().getY() > centerY) {
+            focus[1] = map.getPlayer().getY() - centerY;
+        }
+        for (int x = 0; x + focus[0] < map.getWidth(); x++) {
+            for (int y = 0; y + focus[1] < map.getHeight(); y++) {
+                Cell cell = map.getCell(x + focus[0], y + focus[1]);
                 if (cell.getActor() != null) {
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else if (cell.getItem() != null) {
