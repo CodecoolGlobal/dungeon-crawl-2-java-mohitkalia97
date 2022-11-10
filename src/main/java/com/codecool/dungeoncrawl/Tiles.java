@@ -31,10 +31,10 @@ public class Tiles {
         tileMap.put("exclamation", new Tile(19, 25));
         tileMap.put("gork", new Tile(18, 24));
         tileMap.put("mork", new Tile(1, 15));
-        tileMap.put("inclineLeft", new Tile(20, 4));
-        tileMap.put("inclineRight", new Tile(21, 4));
-        tileMap.put("declineLeft", new Tile(20, 3));
-        tileMap.put("declineRight", new Tile(21, 3));
+        tileMap.put("bottomLeft", new Tile(18, 2));
+        tileMap.put("bottomRight", new Tile(20, 2));
+        tileMap.put("topLeft", new Tile(18, 0));
+        tileMap.put("topRight", new Tile(20, 0));
         tileMap.put("bottomWall", new Tile(19, 2));
         tileMap.put("topWall", new Tile(19, 0));
         tileMap.put("leftWall", new Tile(18, 1));
@@ -50,6 +50,9 @@ public class Tiles {
         tileMap.put("ring", new Tile(13, 28));
         tileMap.put("coin", new Tile(9, 26));
         tileMap.put("crown", new Tile(11, 24));
+        tileMap.put("flame", new Tile(15, 10));
+        tileMap.put("grass", new Tile(5, 0));
+        tileMap.put("tree", new Tile(1, 1));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {

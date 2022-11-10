@@ -16,15 +16,27 @@ public abstract class Actor implements Drawable {
         this.cell.setActor(this);
     }
 
-    public void move(int dx, int dy) {
+    public void move(int dx, int dy) {               //Kollisionsabfrage
         Cell nextCell = cell.getNeighbor(dx, dy);
-        cell.setActor(null);
-        nextCell.setActor(this);
-        cell = nextCell;
+        if (!nextCell.getTileName().equals(CellType.WALL.getTileName())
+            && !nextCell.getTileName().equals(CellType.RABBLE.getTileName())
+            && !nextCell.getTileName().equals(CellType.TREE.getTileName())
+            && !nextCell.getTileName().equals(CellType.TOPWALL.getTileName())
+            && !nextCell.getTileName().equals(CellType.BOTTOMWALL.getTileName())
+            && !nextCell.getTileName().equals(CellType.LEFTWALL.getTileName())
+            && !nextCell.getTileName().equals(CellType.RIGHTWALL.getTileName())
+            && !nextCell.getTileName().equals(CellType.TOPLEFT.getTileName())
+            && !nextCell.getTileName().equals(CellType.TOPRIGHT.getTileName())
+            && !nextCell.getTileName().equals(CellType.BOTTOMLEFT.getTileName())
+            && !nextCell.getTileName().equals(CellType.BOTTOMRIGHT.getTileName())
+            && !nextCell.getTileName().equals(CellType.FLAME.getTileName())
+            && !nextCell.getTileName().equals(CellType.CRYSTAL.getTileName())
+            && nextCell.getActor() == null) {
+            cell.setActor(null);
+            nextCell.setActor(this);
+            cell = nextCell;
+        }
     }
-
-
-
 
     public int getHealth() {
         return health;

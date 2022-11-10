@@ -56,10 +56,10 @@ public class MapLoader {
                             new Mork(cell);
                             break;
                         case '1':
-                            cell.setType(CellType.INCLINELEFT);
+                            cell.setType(CellType.BOTTOMLEFT);
                             break;
                         case '3':
-                            cell.setType(CellType.INCLINERIGHT);
+                            cell.setType(CellType.BOTTOMRIGHT);
                             break;
                         case '2':
                             cell.setType(CellType.BOTTOMWALL);
@@ -74,10 +74,10 @@ public class MapLoader {
                             cell.setType(CellType.RIGHTWALL);
                             break;
                         case '7':
-                            cell.setType(CellType.DECLINELEFT);
+                            cell.setType(CellType.TOPLEFT);
                             break;
                         case '9':
-                            cell.setType(CellType.DECLINERIGHT);
+                            cell.setType(CellType.TOPRIGHT);
                             break;
                         case 'R':
                             cell.setType(CellType.RABBLE);
@@ -104,6 +104,15 @@ public class MapLoader {
                         case 'c':
                             cell.setType(CellType.FLOOR);
                             new Crown(cell);
+                            break;
+                        case 'F':
+                            cell.setType(CellType.FLAME);
+                            break;
+                        case 'G':
+                            cell.setType(CellType.GRASS);
+                            break;
+                        case 'T':
+                            cell.setType(CellType.TREE);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
