@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.items.*;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 import com.codecool.dungeoncrawl.logic.CellType;
 public class Player extends Actor {
@@ -77,11 +78,13 @@ public class Player extends Actor {
             power += 5;
             cell.setItem(null);
             cell.setType(CellType.GRASS);
+            System.out.println(this.power);
         }
         else if (getCell().getItem() instanceof Coin) {
             System.out.println("You picked up a Coin!");
             /*treasurecount += 1;*/
             cell.setItem(null);
+            /*cell.setItem();*/
         }
         else if (getCell().getItem() instanceof Crown) {
             System.out.println("You picked up a Crown!");
@@ -92,9 +95,18 @@ public class Player extends Actor {
             System.out.println("You picked up a Ring!");
             /*treasurecount += 1;*/
             cell.setItem(null);
+            cell.setType(CellType.EMPTY);
         }
 
 
+    }
+
+    public String inventoryToString() {
+        StringJoiner sj = new StringJoiner("\n");
+        for (Item item : inventory) {
+            if (item != null) sj.add(item.getTileName());
+        }
+        return sj.toString();
     }
 
 }

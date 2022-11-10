@@ -50,4 +50,8 @@ public abstract class Actor implements Drawable {
 
     public boolean hasKey() {
         return hasKey;
+    }
+
+    public int getStrength() {
+        return power;
     }}
