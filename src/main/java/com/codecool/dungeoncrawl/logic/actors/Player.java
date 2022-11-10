@@ -28,7 +28,19 @@ public class Player extends Actor {
             attack(nextCell.getActor());
         }
 
-        if (!nextCell.getTileName().equals(CellType.WALL.getTileName()) && nextCell.getActor() == null) {
+        if (!nextCell.getTileName().equals(CellType.WALL.getTileName())
+                && !nextCell.getTileName().equals(CellType.TOPWALL.getTileName())
+                && !nextCell.getTileName().equals(CellType.BOTTOMWALL.getTileName())
+                && !nextCell.getTileName().equals(CellType.LEFTWALL.getTileName())
+                && !nextCell.getTileName().equals(CellType.RIGHTWALL.getTileName())
+                && !nextCell.getTileName().equals(CellType.TOPLEFT.getTileName())
+                && !nextCell.getTileName().equals(CellType.TOPRIGHT.getTileName())
+                && !nextCell.getTileName().equals(CellType.BOTTOMLEFT.getTileName())
+                && !nextCell.getTileName().equals(CellType.BOTTOMRIGHT.getTileName())
+                && !nextCell.getTileName().equals(CellType.FLAME.getTileName())
+                && !nextCell.getTileName().equals(CellType.CRYSTAL.getTileName())
+                && !nextCell.getTileName().equals(CellType.TREE.getTileName())
+                && nextCell.getActor() == null) {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
@@ -53,7 +65,7 @@ public class Player extends Actor {
         return "player";
     }
 
-    public void pickUpItem() {
+/*    public void pickUpItem() {
         inventory.add(getCell().getItem());
         if (getCell().getItem() instanceof Key) {
             setHasKey(true);
@@ -62,6 +74,6 @@ public class Player extends Actor {
             System.out.println("You picked up a weapon!");
         }
 
-    }
+    }*/
 
 }
