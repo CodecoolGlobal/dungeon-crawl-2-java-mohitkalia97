@@ -65,15 +65,36 @@ public class Player extends Actor {
         return "player";
     }
 
-/*    public void pickUpItem() {
+    public void pickUpItem() {
         inventory.add(getCell().getItem());
         if (getCell().getItem() instanceof Key) {
+            System.out.println("You picked up a key!");
             setHasKey(true);
+            cell.setItem(null);
         }
         else if (getCell().getItem() instanceof Weapon) {
             System.out.println("You picked up a weapon!");
+            power += 5;
+            cell.setItem(null);
+            cell.setType(CellType.GRASS);
+        }
+        else if (getCell().getItem() instanceof Coin) {
+            System.out.println("You picked up a Coin!");
+            /*treasurecount += 1;*/
+            cell.setItem(null);
+        }
+        else if (getCell().getItem() instanceof Crown) {
+            System.out.println("You picked up a Crown!");
+            /*treasurecount += 1;*/
+            cell.setItem(null);
+        }
+        else if (getCell().getItem() instanceof Ring) {
+            System.out.println("You picked up a Ring!");
+            /*treasurecount += 1;*/
+            cell.setItem(null);
         }
 
-    }*/
+
+    }
 
 }

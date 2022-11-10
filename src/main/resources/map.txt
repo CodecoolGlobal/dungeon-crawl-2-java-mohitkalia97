@@ -4,9 +4,9 @@
 #..!.....!..######......#GGGGGGGGGGGGTGGGGGGGGGGGG
 #..g.....m..............#GGGGGTGGGGGGGGGGGGGGGGGGG
 #...........######......#GGGGGGGGGGGGGGGGTGGGGGTGG
-#.....s.....#    #......#RGGGGGGGGGGGGGGGGGGGGGGGG
+#.....s.....#    #......#RGGGGGGGGGGGGGGGGGwGGGGGG
 #...........#    #......# 78888888889GGGGGGGGGGGGG
-#...........#    #......# 4R.......R6GGGGGGGGGGGGG
+#...........#    #......# 4R...c...R6GGGGGGGGGGGGG
 #####..######    ###..### 4.........6GGGGGGGGGGGTG
     #..#           #..#   4....C....6GGGGGGGGGGGGG
     #..#           #..#   4.........6GGGGGTGGGGGGG
@@ -14,9 +14,9 @@
   ###..####      #......#s4.........6GGGGGGGGTGGGG
   #..@....#      #......# 4....C....6GGGGGGGGGGGGG
   #.......#      #......# 4.........6GGGGGGGGGGGGG
-  #.......#      #......# 4R.......R6GGGGTGGGGG.GG
+  #.......#      #......#r4R.......R6GGGGTGGGGG.GG
   #.......#      #......# 12222.22223GGGGGGGGGG.GG
-  #.......#      #......#     #.#GGGGGGGTGGGGGG.GG
+  #...k...#      #..o...#     #.#GGGGGGGTGGGGGG.GG
   #.......#      #......#######.###788888888888..6
   #.......#      #...............................6
   #########      ##################122222222222223

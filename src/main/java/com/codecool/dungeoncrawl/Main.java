@@ -3,6 +3,8 @@ package com.codecool.dungeoncrawl;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -48,14 +50,13 @@ public class Main extends Application {
 
 
         pickUpButton.setFocusTraversable(false);
-        pickUpButton.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent arg0) {
-                //TODO: Was soll er tun???
-
+        pickUpButton.setOnAction(actionEvent ->  {
+            Cell cell = map.getPlayer().getCell();
+            if (cell.getItem() != null && cell.getActor() instanceof Player) {
+                map.getPlayer().pickUpItem();
+                //refresh();
             }
-        } );
+        });
         BorderPane borderPane = new BorderPane();
 
         borderPane.setCenter(canvas);
@@ -101,7 +102,11 @@ public class Main extends Application {
             for (int y = 0; y < map.getHeight(); y++) {
                 Cell cell = map.getCell(x, y);
                 if (cell.getActor() != null) {
+             /*       Skeleton skeleton = (Skeleton) map.getCell(x,y).getActor();
+                    skeleton.move();*/
                     Tiles.drawTile(context, cell.getActor(), x, y);
+                } else if (cell.getItem() != null) {
+                    Tiles.drawTile(context, cell.getItem(), x, y);
                 } else {
                     Tiles.drawTile(context, cell, x, y);
                 }

@@ -25,6 +25,9 @@ public abstract class Actor implements Drawable {
         }
     }
 
+
+
+
     public int getHealth() {
         return health;
     }
@@ -40,4 +43,11 @@ public abstract class Actor implements Drawable {
     public int getY() {
         return cell.getY();
     }
-}
+
+    public void setHasKey(boolean hasKey) {
+        this.hasKey = hasKey;
+    }
+
+    public boolean hasKey() {
+        return hasKey;
+    }}
