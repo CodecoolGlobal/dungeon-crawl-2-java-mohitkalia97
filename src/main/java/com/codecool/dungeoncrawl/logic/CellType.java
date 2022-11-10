@@ -13,7 +13,7 @@ public enum CellType {
     LEFTWALL("leftWall"),
     RIGHTWALL("rightWall"),
     RABBLE("rabble"),
-    SAPPHIRE("sapphire"),
+    CRYSTAL("crystal"),
     FLAME("flame"),
     GRASS("grass"),
     TREE("tree");

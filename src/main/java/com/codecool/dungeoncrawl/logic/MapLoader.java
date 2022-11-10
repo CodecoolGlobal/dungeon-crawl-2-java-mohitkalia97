@@ -77,7 +77,7 @@ public class MapLoader {
                             cell.setType(CellType.RABBLE);
                             break;
                         case 'C':
-                            cell.setType(CellType.SAPPHIRE);
+                            cell.setType(CellType.CRYSTAL);
                             break;
                         case 'F':
                             cell.setType(CellType.FLAME);

@@ -21,11 +21,13 @@ public abstract class Actor implements Drawable {
             && !nextCell.getTileName().equals(CellType.TOPWALL.getTileName())
             && !nextCell.getTileName().equals(CellType.BOTTOMWALL.getTileName())
             && !nextCell.getTileName().equals(CellType.LEFTWALL.getTileName())
+            && !nextCell.getTileName().equals(CellType.RIGHTWALL.getTileName())
             && !nextCell.getTileName().equals(CellType.TOPLEFT.getTileName())
             && !nextCell.getTileName().equals(CellType.TOPRIGHT.getTileName())
             && !nextCell.getTileName().equals(CellType.BOTTOMLEFT.getTileName())
             && !nextCell.getTileName().equals(CellType.BOTTOMRIGHT.getTileName())
             && !nextCell.getTileName().equals(CellType.FLAME.getTileName())
+            && !nextCell.getTileName().equals(CellType.CRYSTAL.getTileName())
             && nextCell.getActor() == null) {
             cell.setActor(null);
             nextCell.setActor(this);
