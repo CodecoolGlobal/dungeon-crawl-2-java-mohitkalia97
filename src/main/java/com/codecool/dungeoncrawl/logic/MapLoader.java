@@ -125,6 +125,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Hollow(cell);
                             break;
+                        case 'x':
+                            cell.setType(CellType.FLOOR);
+                            new Golem(cell);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

@@ -42,6 +42,7 @@ public class Tiles {
         tileMap.put("rabble", new Tile(19, 1));
         tileMap.put("crystal", new Tile(17, 22));
         tileMap.put("hollow", new Tile(24, 7));
+        tileMap.put("golem", new Tile(30, 6));
 
 
         //Info: tiles.png 31x31

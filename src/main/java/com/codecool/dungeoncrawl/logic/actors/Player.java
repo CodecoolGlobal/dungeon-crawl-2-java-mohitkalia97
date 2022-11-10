@@ -9,7 +9,7 @@ import java.util.StringJoiner;
 
 
 
-import com.codecool.dungeoncrawl.logic.CellType;
+
 public class Player extends Actor {
 
     public ArrayList<Item> inventory = new ArrayList<>();
@@ -79,7 +79,6 @@ public class Player extends Actor {
             System.out.println("You picked up a weapon!");
             power += 5;
             cell.setItem(null);
-            cell.setType(CellType.GRASS);
             System.out.println(this.power);
         }
         else if (getCell().getItem() instanceof Coin) {
@@ -92,6 +91,7 @@ public class Player extends Actor {
             System.out.println("You picked up a Crown!");
             /*treasurecount += 1;*/
             cell.setItem(null);
+            cell.setType(CellType.GRASS);
         }
         else if (getCell().getItem() instanceof Ring) {
             System.out.println("You picked up a Ring!");
