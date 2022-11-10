@@ -1,11 +1,12 @@
 package com.codecool.dungeoncrawl.logic.actors;
 
 import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.items.*;
 
 import java.util.ArrayList;
-import com.codecool.dungeoncrawl.logic.CellType;
 
+import com.codecool.dungeoncrawl.logic.CellType;
 public class Player extends Actor {
 
     public ArrayList<Item> inventory = new ArrayList<>();

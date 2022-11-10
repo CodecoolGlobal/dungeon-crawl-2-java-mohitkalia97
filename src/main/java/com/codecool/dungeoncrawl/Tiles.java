@@ -26,8 +26,21 @@ public class Tiles {
         tileMap.put("empty", new Tile(0, 0));
         tileMap.put("wall", new Tile(10, 17));
         tileMap.put("floor", new Tile(2, 0));
-        tileMap.put("player", new Tile(25, 1));
+        tileMap.put("player", new Tile(27, 0));
         tileMap.put("skeleton", new Tile(29, 6));
+        tileMap.put("exclamation", new Tile(19, 25));
+        tileMap.put("gork", new Tile(18, 24));
+        tileMap.put("mork", new Tile(1, 15));
+        tileMap.put("inclineLeft", new Tile(20, 4));
+        tileMap.put("inclineRight", new Tile(21, 4));
+        tileMap.put("declineLeft", new Tile(20, 3));
+        tileMap.put("declineRight", new Tile(21, 3));
+        tileMap.put("bottomWall", new Tile(19, 2));
+        tileMap.put("topWall", new Tile(19, 0));
+        tileMap.put("leftWall", new Tile(18, 1));
+        tileMap.put("rightWall", new Tile(20, 1));
+        tileMap.put("rabble", new Tile(19, 1));
+        tileMap.put("crystal", new Tile(17, 22));
 
         //Info: tiles.png 31x31
         //added items
