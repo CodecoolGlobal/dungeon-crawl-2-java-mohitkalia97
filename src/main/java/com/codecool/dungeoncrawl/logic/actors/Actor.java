@@ -18,12 +18,11 @@ public abstract class Actor implements Drawable {
 
     public void move(int dx, int dy) {               //Kollisionsabfrage
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (!nextCell.getTileName().equals(CellType.WALL.getTileName()) && nextCell.getActor() == null) {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
         }
-    }
+
 
 
 

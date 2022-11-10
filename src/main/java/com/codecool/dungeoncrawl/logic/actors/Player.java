@@ -7,6 +7,8 @@ import com.codecool.dungeoncrawl.logic.items.*;
 import java.util.ArrayList;
 import java.util.StringJoiner;
 
+
+
 import com.codecool.dungeoncrawl.logic.CellType;
 public class Player extends Actor {
 
@@ -109,4 +111,9 @@ public class Player extends Actor {
         return sj.toString();
     }
 
+    @Override
+    public Cell getCell() {
+        var currentPosOfPlayer = super.getCell();
+        return currentPosOfPlayer;
+    }
 }

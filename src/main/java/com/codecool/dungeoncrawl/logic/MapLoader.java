@@ -12,8 +12,8 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap() {
-        InputStream is = MapLoader.class.getResourceAsStream("/map.txt");
+    public static GameMap loadMap(String currentMap) {
+        InputStream is = MapLoader.class.getResourceAsStream(currentMap);
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
@@ -26,6 +26,13 @@ public class MapLoader {
             for (int x = 0; x < width; x++) {
                 if (x < line.length()) {
                     Cell cell = map.getCell(x, y);
+                    Cell closedDoor = map.getCell(19,19);
+                    Cell openDoor = map.getCell(5, 19);
+                    Cell keys = map.getCell(10, 5);
+                    openDoor.setType(CellType.OPENDOOR);
+                    closedDoor.setType(CellType.ClOSEDDOOR);
+                    keys.setType(CellType.KEYS);
+
                     switch (line.charAt(x)) {
                         case ' ':
                             cell.setType(CellType.EMPTY);

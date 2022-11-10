@@ -19,11 +19,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import java.util.Map;
 
 
 
 public class Main extends Application {
-    GameMap map = MapLoader.loadMap();
+    String currentMap = "/map.txt";
+    GameMap map = MapLoader.loadMap(currentMap);
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
             map.getHeight() * Tiles.TILE_WIDTH);
@@ -80,24 +82,61 @@ public class Main extends Application {
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
+                changeLevel(map.getPlayer());
                 refresh();
                 break;
             case DOWN:
                 map.getPlayer().move(0, 1);
+                changeLevel(map.getPlayer());
                 refresh();
                 break;
             case LEFT:
                 map.getPlayer().move(-1, 0);
+                changeLevel(map.getPlayer());
                 refresh();
                 break;
             case RIGHT:
                 map.getPlayer().move(1,0);
+                changeLevel(map.getPlayer());
                 refresh();
                 break;
         }
         /*map.getPlayer().move(someInt,someInt);*/
     }
 
+    private void changeLevel(Player player) {
+        if(player.getX() == 19 && player.getY() == 19) {
+            if(currentMap.equals("/map.txt")){
+                setupNewMap("/map1.txt", new Stage());
+            }
+        }
+    }
+    private void setupNewMap(String newMap, Stage primaryStage){
+        MapLoader.loadMap(newMap);
+        Canvas canvas = new Canvas(
+                map.getWidth() * Tiles.TILE_WIDTH,
+                map.getHeight() * Tiles.TILE_WIDTH);
+        GraphicsContext context = canvas.getGraphicsContext2D();
+        GridPane ui = new GridPane();
+        ui.setPrefWidth(200);
+        ui.setPadding(new Insets(10));
+
+        ui.add(new Label("Health: "), 0, 0);
+        ui.add(healthLabel, 1, 0);
+
+        BorderPane borderPane = new BorderPane();
+
+        borderPane.setCenter(canvas);
+        borderPane.setRight(ui);
+
+        Scene scene = new Scene(borderPane);
+        primaryStage.setScene(scene);
+        refresh();
+        scene.setOnKeyPressed(this::onKeyPressed);
+
+        primaryStage.setTitle("Dungeon Crawl");
+        primaryStage.show();
+    }
     private void refresh() {
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
