@@ -52,8 +52,9 @@ public class Main extends Application {
         pickUpButton.setFocusTraversable(false);
         pickUpButton.setOnAction(actionEvent ->  {
             Cell cell = map.getPlayer().getCell();
-            if (cell.getItem() != null && cell.getActor() instanceof Player) {
-                map.getPlayer().pickUpItem();
+            if (cell.getItem() != null && cell.getActor() instanceof Player player) {
+                //map.getPlayer().pickUpItem();
+                player.pickUpItem();
                 refresh();
             }
         });
@@ -100,7 +101,7 @@ public class Main extends Application {
     }
 
     private void changeLevel(Player player) {
-        if(player.getX() == 19 && player.getY() == 19) {
+        if(player.getX() == 19 && player.getY() == 19) { // TODO: Magic numbers
             if(currentMap.equals("/map.txt")){
                 setupNewMap("/map1.txt");
             }
@@ -111,12 +112,12 @@ public class Main extends Application {
         Canvas canvas = new Canvas(
                 Math.min(map.getWidth(), 30) * Tiles.TILE_WIDTH,
                 Math.min(map.getHeight(), 22) * Tiles.TILE_WIDTH);
-        GraphicsContext context = canvas.getGraphicsContext2D();
+        //GraphicsContext context = canvas.getGraphicsContext2D();
         GridPane ui = new GridPane();
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
 
-        currentMap=newMap;
+        currentMap = newMap;
         map = MapLoader.loadMap(currentMap);
         refresh();
 
