@@ -7,10 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="dungeon-crawl" />
+        <module name="dungeon-crawl-1-java-mohitkalia97" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="dungeon-crawl" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package com.codecool.dungeoncrawl.dao;
+/*package com.codecool.dungeoncrawl.dao;
 
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.model.PlayerModel;
@@ -36,4 +36,4 @@ public class GameDatabaseManager {
 
         return dataSource;
     }
-}
+}*/

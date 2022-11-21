@@ -28,6 +28,38 @@ public class Tiles {
         tileMap.put("floor", new Tile(2, 0));
         tileMap.put("player", new Tile(27, 0));
         tileMap.put("skeleton", new Tile(29, 6));
+        tileMap.put("exclamation", new Tile(19, 25));
+        tileMap.put("gork", new Tile(18, 24));
+        tileMap.put("mork", new Tile(1, 15));
+        tileMap.put("bottomLeft", new Tile(18, 2));
+        tileMap.put("bottomRight", new Tile(20, 2));
+        tileMap.put("topLeft", new Tile(18, 0));
+        tileMap.put("topRight", new Tile(20, 0));
+        tileMap.put("bottomWall", new Tile(19, 2));
+        tileMap.put("topWall", new Tile(19, 0));
+        tileMap.put("leftWall", new Tile(18, 1));
+        tileMap.put("rightWall", new Tile(20, 1));
+        tileMap.put("rabble", new Tile(19, 1));
+        tileMap.put("crystal", new Tile(17, 22));
+        tileMap.put("hollow", new Tile(24, 7));
+        tileMap.put("golem", new Tile(30, 6));
+
+
+        //Info: tiles.png 31x31
+        //added items
+        tileMap.put("key", new Tile(17, 23));
+        tileMap.put("weapon", new Tile(0, 30));
+        //treasure items
+        tileMap.put("ring", new Tile(13, 28));
+        tileMap.put("coin", new Tile(9, 26));
+        tileMap.put("crown", new Tile(11, 24));
+        tileMap.put("flame", new Tile(15, 10));
+        tileMap.put("grass", new Tile(5, 0));
+        tileMap.put("tree", new Tile(1, 1));
+
+        tileMap.put("opendoor", new Tile(2, 9));
+        tileMap.put("closeddoor", new Tile(0, 9));
+        tileMap.put("keys", new Tile(17, 23));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
