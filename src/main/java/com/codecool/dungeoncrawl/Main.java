@@ -28,7 +28,9 @@ public class Main extends Application {
     Label healthLabel = new Label();
     Label inventoryLabel = new Label();
     Label strengthLabel = new Label();
+    Label exportLabel = new Label();
     private final Button pickUpButton = new Button("Pick up the item!");
+    private final Button exportButton = new Button("Export the gamestate");
 
     public static void main(String[] args) {
         launch(args);
@@ -47,9 +49,13 @@ public class Main extends Application {
         ui.add(pickUpButton, 0, 50);
         ui.add(new Label("Strength"), 0, 1);
         ui.add(strengthLabel, 1, 1);
+        ui.add(exportButton, 0, 51);
 
 
         pickUpButton.setFocusTraversable(false);
+        exportButton.setFocusTraversable(false);
+
+
         pickUpButton.setOnAction(actionEvent ->  {
             Cell cell = map.getPlayer().getCell();
             if (cell.getItem() != null && cell.getActor() instanceof Player player) {
@@ -58,6 +64,10 @@ public class Main extends Application {
                 refresh();
             }
         });
+
+        //exportButton.setOnAction(actionEvent -> player.exportGameState());
+
+
         BorderPane borderPane = new BorderPane();
 
         borderPane.setCenter(canvas);
