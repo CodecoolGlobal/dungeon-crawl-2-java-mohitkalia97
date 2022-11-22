@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl;
 
+import com.codecool.dungeoncrawl.dao.GameDatabaseManager;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
@@ -11,11 +12,16 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 
 public class Main extends Application {
@@ -31,6 +37,8 @@ public class Main extends Application {
     Label exportLabel = new Label();
     private final Button pickUpButton = new Button("Pick up the item!");
     private final Button exportButton = new Button("Export the gamestate");
+
+    GameDatabaseManager dbManager;
 
     public static void main(String[] args) {
         launch(args);
@@ -82,6 +90,16 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    private void onKeyReleased(KeyEvent keyEvent) {
+        KeyCombination exitCombinationMac = new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN);
+        KeyCombination exitCombinationWin = new KeyCodeCombination(KeyCode.F4, KeyCombination.ALT_DOWN);
+        if (exitCombinationMac.match(keyEvent)
+                || exitCombinationWin.match(keyEvent)
+                || keyEvent.getCode() == KeyCode.ESCAPE) {
+            exit();
+        }
+    }
+
     private void onKeyPressed(KeyEvent keyEvent) {
     /*    Random random = new Random();
         int someInt = random.nextInt(3) - 1;*/
@@ -105,6 +123,10 @@ public class Main extends Application {
                 map.getPlayer().move(1,0);
                 changeLevel(map.getPlayer());
                 refresh();
+                break;
+            case S:
+                Player player = map.getPlayer();
+                dbManager.savePlayer(player);
                 break;
         }
         /*map.getPlayer().move(someInt,someInt);*/
@@ -159,6 +181,24 @@ public class Main extends Application {
         healthLabel.setText("" + map.getPlayer().getHealth());
         inventoryLabel.setText("" + map.getPlayer().inventoryToString());
         strengthLabel.setText("" + map.getPlayer().getStrength());
+    }
+
+    private void setupDbManager() {
+        dbManager = new GameDatabaseManager();
+        try {
+            dbManager.setup();
+        } catch (SQLException ex) {
+            System.out.println("Cannot connect to database.");
+        }
+    }
+
+    private void exit() {
+        try {
+            stop();
+        } catch (Exception e) {
+            System.exit(1);
+        }
+        System.exit(0);
     }
 }
 
