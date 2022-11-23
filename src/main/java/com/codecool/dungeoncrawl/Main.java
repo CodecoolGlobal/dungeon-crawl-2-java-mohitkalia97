@@ -5,12 +5,11 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.model.PlayerModel;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -110,6 +109,7 @@ public class Main extends Application {
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
         stage.setResizable(true);
+
         stage.setTitle("Save/Load Game");
         Button saveButton = new Button("Save");
         saveButton.setLayoutX(230);
@@ -119,7 +119,7 @@ public class Main extends Application {
         cancelButton.setLayoutX(300);
         cancelButton.setLayoutY(200);
 
-        TextField txt = new TextField();
+        TextField txt = new TextField("Name");
         txt.setLayoutX(50);
         txt.setLayoutY(200);
 
@@ -127,6 +127,7 @@ public class Main extends Application {
         saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                System.out.println(txt.getText());
 
             }
         });
@@ -134,6 +135,8 @@ public class Main extends Application {
         stage.setScene(new Scene(pane1, 400, 400));
         stage.show();
     }
+
+
 
     private void onKeyPressed(KeyEvent keyEvent) {
     /*    Random random = new Random();

@@ -23,7 +23,8 @@ public class PlayerModel extends BaseModel {
 
     }
 
-    public String getPlayerName() {
+    public String
+    getPlayerName() {
         return playerName;
     }
 
