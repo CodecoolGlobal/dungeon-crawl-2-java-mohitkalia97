@@ -6,19 +6,26 @@ import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
@@ -99,6 +106,34 @@ public class Main extends Application {
             exit();
         }
     }
+    private void modalPopup() {
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.setResizable(true);
+        stage.setTitle("Save/Load Game");
+        Button saveButton = new Button("Save");
+        saveButton.setLayoutX(230);
+        saveButton.setLayoutY(200);
+
+        Button cancelButton = new Button("Cancel");
+        cancelButton.setLayoutX(300);
+        cancelButton.setLayoutY(200);
+
+        TextField txt = new TextField();
+        txt.setLayoutX(50);
+        txt.setLayoutY(200);
+
+        Pane pane1 = new Pane();
+        saveButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+        pane1.getChildren().addAll(txt,saveButton, cancelButton);
+        stage.setScene(new Scene(pane1, 400, 400));
+        stage.show();
+    }
 
     private void onKeyPressed(KeyEvent keyEvent) {
     /*    Random random = new Random();
@@ -126,7 +161,8 @@ public class Main extends Application {
                 break;
             case S:
                 Player player = map.getPlayer();
-                dbManager.savePlayer(player);
+                /*dbManager.savePlayer(player);*/
+                modalPopup();
                 break;
         }
         /*map.getPlayer().move(someInt,someInt);*/
