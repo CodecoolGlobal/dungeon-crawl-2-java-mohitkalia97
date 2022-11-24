@@ -4,13 +4,9 @@ import com.codecool.dungeoncrawl.dao.GameDatabaseManager;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
-import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.model.GameState;
-import com.codecool.dungeoncrawl.model.PlayerModel;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -32,8 +28,6 @@ import javafx.stage.Stage;
 import java.sql.Date;
 import java.sql.SQLException;
 
-import static com.codecool.dungeoncrawl.model.GameState.getPlayer;
-
 
 public class Main extends Application {
     String currentMap = "/map.txt";
@@ -49,6 +43,7 @@ public class Main extends Application {
     private final Button pickUpButton = new Button("Pick up the item!");
     private final Button exportButton = new Button("Export the gamestate");
 
+    Player player;
     GameDatabaseManager dbManager;
 
     public static void main(String[] args) {
@@ -57,6 +52,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        Player player1 = map.getPlayer();
         GridPane ui = new GridPane();
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
@@ -85,7 +81,6 @@ public class Main extends Application {
         });
 
         //exportButton.setOnAction(actionEvent -> player.exportGameState());
-
 
         BorderPane borderPane = new BorderPane();
 
@@ -131,9 +126,8 @@ public class Main extends Application {
         Pane pane1 = new Pane();
         saveButton.setOnAction(actionEvent ->  {
             System.out.println(txt.getText());
-            PlayerModel player = getPlayer();
-            add(player);
-
+            player = map.getPlayer();
+            saveGame(txt, player);
         });
 
         cancelButton.setOnAction(actionEvent -> {
@@ -146,14 +140,22 @@ public class Main extends Application {
         stage.show();
     }
 
-    private void saveGame() {
-        PlayerModel model = new PlayerModel(player);
-        model.setId(player.getId());
-        gdm.getPlayerDao().update(model);
-
-        GameState gameState = new GameState(map, new Date(System.currentTimeMillis()), model, currentMap);
-        gdm.getGameStateDaoJdbc().update(gameState);
+    private void saveGame(TextField txt, Player player) {
+        //PlayerModel model = new PlayerModel(player);
+        System.out.println(player);
+        player.setId(player.getId());
+        player.setName(txt.getText());
+        dbManager.getPlayerDao().update(player);
+        GameState gameState = new GameState(map, new Date(System.currentTimeMillis()), player, currentMap);
+        dbManager.getGameStateDaoJdbc().update(gameState);
+        System.out.println("save works");
     }
+
+    /*private void initPlayer(String name) {
+        player = map.getPlayer();
+        player.setName(name);
+        dbManager.savePlayer(player);
+    }*/
 
     private void onKeyPressed(KeyEvent keyEvent) {
     /*    Random random = new Random();

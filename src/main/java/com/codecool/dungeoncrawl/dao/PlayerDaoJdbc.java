@@ -14,7 +14,7 @@ public class PlayerDaoJdbc implements PlayerDao {
     }
 
     @Override
-    public void add(PlayerModel player) {
+    public void add(Player player) {
         try (Connection conn = dataSource.getConnection()) {
             String sql = "INSERT INTO player (player_name, hp, x, y) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -32,7 +32,7 @@ public class PlayerDaoJdbc implements PlayerDao {
     }
 
     @Override
-    public void update(PlayerModel player) {
+    public void update(Player player) {
 
     }
 

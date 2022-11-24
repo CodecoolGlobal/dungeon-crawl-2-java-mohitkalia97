@@ -9,15 +9,24 @@ import java.sql.SQLException;
 
 public class GameDatabaseManager {
     private PlayerDao playerDao;
+    private GameStateDaoJdbc gameStateDaoJdbc;
 
     public void setup() throws SQLException {
         DataSource dataSource = connect();
         playerDao = new PlayerDaoJdbc(dataSource);
     }
 
-    public void savePlayer(Player player) {
-        PlayerModel model = new PlayerModel(player);
-        playerDao.add(model);
+    /*public void savePlayer(Player player) {
+        Player player = new PlayerModel(player);
+        playerDao.add(player);
+    }*/
+
+    public GameStateDaoJdbc getGameStateDaoJdbc() {
+        return gameStateDaoJdbc;
+    }
+
+    public PlayerDao getPlayerDao() {
+        return playerDao;
     }
 
     private DataSource connect() throws SQLException {

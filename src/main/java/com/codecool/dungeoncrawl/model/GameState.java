@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.model;
 
 import com.codecool.dungeoncrawl.logic.GameMap;
+import com.codecool.dungeoncrawl.logic.actors.Player;
 
 import java.util.ArrayList;
 import java.sql.Date;
@@ -10,15 +11,15 @@ public class GameState extends BaseModel {
     private Date savedAt;
     private String currentMap;
     private List<String> discoveredMaps = new ArrayList<>();
-    private PlayerModel player;
+    private static Player player;
 
-    public GameState(String currentMap, Date savedAt, PlayerModel player) {
+    public GameState(String currentMap, Date savedAt, Player player) {
         this.currentMap = currentMap;
         this.savedAt = savedAt;
         this.player = player;
     }
 
-    public GameState(GameMap map, Date savedAt, PlayerModel model, String currentMap) {
+    public GameState(GameMap map, Date savedAt, Player model, String currentMap) {
         super();
     }
 
@@ -46,11 +47,11 @@ public class GameState extends BaseModel {
         this.discoveredMaps.add(map);
     }
 
-    public static PlayerModel getPlayer() {
+    public static Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(PlayerModel player) {
+    public void setPlayer(Player player) {
         this.player = player;
     }
 }

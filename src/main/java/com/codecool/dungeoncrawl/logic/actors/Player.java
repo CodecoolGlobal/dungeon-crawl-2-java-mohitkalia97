@@ -14,6 +14,8 @@ public class Player extends Actor {
 
     public ArrayList<Item> inventory = new ArrayList<>();
     public boolean hasKey = false;
+    private int id;
+    private String name;
 
     public Player(Cell cell) {
         super(cell);
@@ -111,9 +113,25 @@ public class Player extends Actor {
         return sj.toString();
     }
 
+    public int getId(){
+        return id;
+    }
+
     @Override
     public Cell getCell() {
         var currentPosOfPlayer = super.getCell();
         return currentPosOfPlayer;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
