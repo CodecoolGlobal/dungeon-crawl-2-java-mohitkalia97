@@ -4,7 +4,9 @@ import com.codecool.dungeoncrawl.dao.GameDatabaseManager;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.model.GameState;
 import com.codecool.dungeoncrawl.model.PlayerModel;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -27,7 +29,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.sql.Date;
 import java.sql.SQLException;
+
+import static com.codecool.dungeoncrawl.model.GameState.getPlayer;
 
 
 public class Main extends Application {
@@ -124,19 +129,31 @@ public class Main extends Application {
         txt.setLayoutY(200);
 
         Pane pane1 = new Pane();
-        saveButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println(txt.getText());
+        saveButton.setOnAction(actionEvent ->  {
+            System.out.println(txt.getText());
+            PlayerModel player = getPlayer();
+            add(player);
 
-            }
         });
+
+        cancelButton.setOnAction(actionEvent -> {
+            stage.close();
+        });
+
+
         pane1.getChildren().addAll(txt,saveButton, cancelButton);
         stage.setScene(new Scene(pane1, 400, 400));
         stage.show();
     }
 
+    private void saveGame() {
+        PlayerModel model = new PlayerModel(player);
+        model.setId(player.getId());
+        gdm.getPlayerDao().update(model);
 
+        GameState gameState = new GameState(map, new Date(System.currentTimeMillis()), model, currentMap);
+        gdm.getGameStateDaoJdbc().update(gameState);
+    }
 
     private void onKeyPressed(KeyEvent keyEvent) {
     /*    Random random = new Random();
