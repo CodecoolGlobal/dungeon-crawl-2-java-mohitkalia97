@@ -25,6 +25,7 @@ import java.sql.SQLException;
 
 
 public class Main extends Application {
+    int playerCoordinates = 19;
     String currentMap = "/map.txt";
     GameMap map = MapLoader.loadMap(currentMap);
     Canvas canvas = new Canvas(
@@ -133,7 +134,7 @@ public class Main extends Application {
     }
 
     private void changeLevel(Player player) {
-        if(player.getX() == 19 && player.getY() == 19) { // TODO: Magic numbers
+        if(player.getX() == playerCoordinates && player.getY() == playerCoordinates) {
             if(currentMap.equals("/map.txt")){
                 setupNewMap("/map1.txt");
             }
