@@ -143,13 +143,14 @@ public class Main extends Application {
 
     private void saveGame(TextField txt, Player player) {
         //PlayerModel model = new PlayerModel(player);
+        setupDbManager();
         System.out.println(player);
         player.setId(player.getId());
         player.setName(txt.getText());
         // commnented out because of presentation
         /*dbManager.getPlayerDao().update(player);*/
         GameState gameState = new GameState(map, new Date(System.currentTimeMillis()), player, currentMap);
-        dbManager.getGameStateDaoJdbc().update(gameState);
+        dbManager.saveGameState(gameState);
         System.out.println("save works");
     }
 

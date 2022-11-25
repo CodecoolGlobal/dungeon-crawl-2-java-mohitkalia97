@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GameState extends BaseModel {
     private Date savedAt;
-    private String currentMap;
+    private String currentMap = "map1";
     private List<String> discoveredMaps = new ArrayList<>();
     private static Player player;
 
