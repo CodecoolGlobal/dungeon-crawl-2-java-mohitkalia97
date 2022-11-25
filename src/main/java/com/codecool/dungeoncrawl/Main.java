@@ -30,6 +30,7 @@ import java.sql.SQLException;
 
 
 public class Main extends Application {
+    int playerPosition = 19;
     String currentMap = "/map.txt";
     GameMap map = MapLoader.loadMap(currentMap);
     Canvas canvas = new Canvas(
@@ -145,7 +146,8 @@ public class Main extends Application {
         System.out.println(player);
         player.setId(player.getId());
         player.setName(txt.getText());
-        dbManager.getPlayerDao().update(player);
+        // commnented out because of presentation
+        /*dbManager.getPlayerDao().update(player);*/
         GameState gameState = new GameState(map, new Date(System.currentTimeMillis()), player, currentMap);
         dbManager.getGameStateDaoJdbc().update(gameState);
         System.out.println("save works");
@@ -191,7 +193,7 @@ public class Main extends Application {
     }
 
     private void changeLevel(Player player) {
-        if(player.getX() == 19 && player.getY() == 19) { // TODO: Magic numbers
+        if(player.getX() == playerPosition && player.getY() == playerPosition) {
             if(currentMap.equals("/map.txt")){
                 setupNewMap("/map1.txt");
             }

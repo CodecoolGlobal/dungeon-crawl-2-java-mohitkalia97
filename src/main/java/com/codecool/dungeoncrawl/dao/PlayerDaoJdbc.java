@@ -12,8 +12,8 @@ public class PlayerDaoJdbc implements PlayerDao {
     public PlayerDaoJdbc(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
-    @Override
+    // commented out because of presentation
+    /*@Override
     public void add(Player player) {
         try (Connection conn = dataSource.getConnection()) {
             String sql = "INSERT INTO player (player_name, hp, x, y) VALUES (?, ?, ?, ?)";
@@ -29,12 +29,12 @@ public class PlayerDaoJdbc implements PlayerDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
+    }*/
+// commented out because of presentation
+/*    @Override
     public void update(Player player) {
 
-    }
+    }*/
 
     @Override
     public PlayerModel get(int id) {
